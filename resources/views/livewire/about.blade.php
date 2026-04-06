@@ -1,45 +1,78 @@
-<div class="bg-white">
-    <div class="relative py-24 bg-gray-50 rounded-b-[4rem]">
+<div class="bg-white" style="font-family: 'DM Sans', sans-serif;">
+    {{-- Technical Hero Section --}}
+    <div class="relative py-32 bg-[#FAFAF8] border-b border-black/5">
         <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-            <span class="text-indigo-600 font-bold tracking-[0.2em] uppercase text-xs">Since 2024</span>
-            <h1 class="mt-4 text-5xl font-black tracking-tight text-gray-900 sm:text-7xl italic">
-                Beyond the <span class="text-indigo-600">Product.</span>
+            <span class="text-black font-bold tracking-[0.4em] uppercase text-[10px] bg-black/5 px-4 py-2">Established
+                2024</span>
+            <h1 class="mt-10 text-5xl tracking-tight text-gray-900 sm:text-8xl"
+                style="font-family: 'DM Serif Display', serif;">
+                Engineering <em class="italic font-light text-black/40">Precision.</em>
             </h1>
-            <p class="mt-8 text-xl leading-8 text-gray-600 max-w-3xl mx-auto">
-                We don’t just sell items; we curate experiences. Our journey began in a small studio with one goal: to
-                bridge the gap between high-end design and everyday accessibility.
+            <p class="mt-10 text-lg leading-relaxed text-black/60 max-w-2xl mx-auto font-light">
+                We don’t just supply hardware; we curate the tools of the modern era. Our mission is to bridge the gap
+                between industrial-grade performance and refined consumer aesthetics.
             </p>
         </div>
     </div>
 
+    {{-- Philosophy Grid --}}
     <div class="py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                 <div>
-                    <h2 class="text-3xl font-black text-gray-900 italic">Our Philosophy</h2>
-                    <div class="mt-6 space-y-6 text-gray-600 text-lg leading-relaxed">
-                        <p>
-                            <strong class="text-gray-900">Sustainability:</strong> Every piece is sourced from partners
-                            who prioritize the planet. We use 100% recyclable packaging.
-                        </p>
-                        <p>
-                            <strong class="text-gray-900">Curation:</strong> Our team spends over 40 hours a week
-                            researching trends to ensure our "New Arrival" section is actually fresh.
-                        </p>
-                        <p>
-                            <strong class="text-gray-900">Community:</strong> We donate 2% of every sale to local design
-                            workshops, fostering the next generation of creators.
-                        </p>
+                    <h2 class="text-3xl tracking-tight text-black mb-8" style="font-family: 'DM Serif Display', serif;">
+                        The <em class="italic text-black/40">Technical</em> Philosophy
+                    </h2>
+                    <div class="space-y-10">
+                        <div class="border-l-2 border-black pl-6">
+                            <h4 class="text-[11px] font-bold uppercase tracking-widest text-black mb-2">01. Architecture
+                            </h4>
+                            <p class="text-[15px] text-black/60 font-light leading-relaxed">
+                                Every component is vetted for structural integrity and aesthetic harmony. We prioritize
+                                hardware that performs as beautifully as it looks.
+                            </p>
+                        </div>
+                        <div class="border-l-2 border-black/10 pl-6">
+                            <h4 class="text-[11px] font-bold uppercase tracking-widest text-black mb-2">02. Curation
+                                Protocol</h4>
+                            <p class="text-[15px] text-black/60 font-light leading-relaxed">
+                                Our engineers spend over 40 hours a week stress-testing new inventory to ensure our "New
+                                Arrival" section meets industrial standards.
+                            </p>
+                        </div>
+                        <div class="border-l-2 border-black/10 pl-6">
+                            <h4 class="text-[11px] font-bold uppercase tracking-widest text-black mb-2">03. Support
+                                Ecosystem</h4>
+                            <p class="text-[15px] text-black/60 font-light leading-relaxed">
+                                We invest in a long-term technical ecosystem, providing 2-year hardware coverage and
+                                direct engineering support for every client.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="h-64 bg-indigo-100 rounded-3xl p-8 flex flex-col justify-end">
-                        <span class="text-4xl font-black text-indigo-600">01</span>
-                        <span class="font-bold text-gray-900 mt-2">Design</span>
+
+                {{-- Visual Stat Grid --}}
+                <div class="grid grid-cols-2 gap-px bg-black/5 border border-black/5 shadow-2xl">
+                    <div
+                        class="aspect-square bg-white p-10 flex flex-col justify-between group hover:bg-black transition-colors duration-500">
+                        <span class="text-4xl font-light text-black/20 group-hover:text-white/20 transition-colors"
+                            style="font-family: 'DM Serif Display', serif;">01</span>
+                        <div>
+                            <span
+                                class="block font-bold text-[10px] uppercase tracking-[0.2em] text-black group-hover:text-white transition-colors">Component</span>
+                            <span
+                                class="block font-bold text-[10px] uppercase tracking-[0.2em] text-black/40 group-hover:text-white/40 transition-colors">Selection</span>
+                        </div>
                     </div>
-                    <div class="h-64 bg-gray-900 rounded-3xl p-8 flex flex-col justify-end text-white mt-8">
-                        <span class="text-4xl font-black text-indigo-400">02</span>
-                        <span class="font-bold mt-2">Quality</span>
+                    <div class="aspect-square bg-black p-10 flex flex-col justify-between mt-12">
+                        <span class="text-4xl font-light text-white/20"
+                            style="font-family: 'DM Serif Display', serif;">02</span>
+                        <div>
+                            <span
+                                class="block font-bold text-[10px] uppercase tracking-[0.2em] text-white">Quality</span>
+                            <span
+                                class="block font-bold text-[10px] uppercase tracking-[0.2em] text-white/40">Assurance</span>
+                        </div>
                     </div>
                 </div>
             </div>

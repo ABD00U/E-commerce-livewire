@@ -1,113 +1,147 @@
-<div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-    <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 mb-8">
-        <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">Shopping Cart</h1>
-        <p class="text-sm text-gray-500">You have (3) items in your cart</p>
+<div class="max-w-[1400px] mx-auto px-6 py-20 lg:px-12" style="font-family: 'DM Sans', sans-serif;">
+
+    {{-- Header: Terminal Status --}}
+    <div class="flex items-end justify-between border-b border-black/5 pb-10 mb-16">
+        <div>
+            <div class="mb-3 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-black/40">
+                <span class="h-px w-8 bg-black/20"></span>
+                Order Manifest
+            </div>
+            <h1 class="text-5xl tracking-tighter text-black sm:text-6xl" style="font-family: 'DM Serif Display', serif;">
+                Your <em class="italic font-light text-black/30">Selection.</em>
+            </h1>
+        </div>
+        <div class="text-right">
+            <p class="text-[10px] font-bold text-black uppercase tracking-widest">Active Units</p>
+            <p class="text-2xl font-light text-black/40">03</p>
+        </div>
     </div>
 
-    <div class="lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start">
+    <div class="lg:grid lg:grid-cols-12 lg:gap-x-20 lg:items-start">
+
+        {{-- Left Side: Hardware List --}}
         <div class="lg:col-span-7">
-            <div class="space-y-6">
-                <div
-                    class="group relative flex flex-col sm:flex-row gap-6 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
-                    <div class="h-32 w-32 flex-shrink-0 overflow-hidden rounded-xl border border-gray-100 bg-gray-50">
-                        <img src="https://via.placeholder.com/150" alt="Item Image"
-                            class="h-full w-full object-contain object-center group-hover:scale-105 transition-transform duration-300">
-                    </div>
+            <div class="space-y-1"> {{-- Tight spacing for a list feel --}}
+                @foreach ($productInCart as $item)
+                    <div
+                        class="group relative flex flex-col sm:flex-row gap-8 bg-white p-6 border-b border-black/5 hover:bg-[#FAFAF8] transition-colors duration-500">
 
+                        {{-- Image: Technical Preview --}}
+                        <div
+                            class="h-32 w-32 flex-shrink-0 bg-[#F5F5F3] border border-black/5 p-4 transition-transform group-hover:scale-105">
+                            <img src="https://via.placeholder.com/150" alt="Item Image"
+                                class="h-full w-full object-contain mix-blend-multiply">
+                        </div>
 
-                    @foreach ($productInCart as $item)
                         <div class="flex flex-1 flex-col justify-between">
                             <div class="flex justify-between items-start">
                                 <div>
                                     <span
-                                        class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Category</span>
-                                    <h3 class="text-lg font-bold text-gray-900 mt-1">Item Name</h3>
+                                        class="text-[9px] font-bold text-black/30 uppercase tracking-[0.25em]">Component
+                                        / Logic</span>
+                                    <h3 class="text-xl text-black mt-1 leading-none"
+                                        style="font-family: 'DM Serif Display', serif;">MK-V Professional Monitor</h3>
+                                    <p class="text-[10px] text-black/40 mt-2 font-mono italic">REF_ID: 8829-X</p>
                                 </div>
-                                <p class="text-xl font-black text-gray-900">$299.00</p>
+                                <p class="text-lg font-medium text-black tracking-tighter">$299.00</p>
                             </div>
 
-                            <div class="flex items-center justify-between mt-4">
-                                <div class="inline-flex items-center p-1 bg-gray-50 rounded-xl border border-gray-200">
+                            <div class="flex items-center justify-between mt-6">
+                                {{-- Industrial Quantity Selector --}}
+                                <div class="inline-flex items-center border border-black/10 bg-white">
                                     <button
-                                        class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white hover:shadow-sm text-gray-600 transition-all font-bold">-</button>
-                                    <span class="mx-4 font-bold text-gray-900">1</span>
+                                        class="w-10 h-10 flex items-center justify-center hover:bg-black hover:text-white transition-colors text-xs">-</button>
+                                    <span class="px-6 text-[11px] font-bold text-black font-mono">01</span>
                                     <button
-                                        class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white hover:shadow-sm text-gray-600 transition-all font-bold">+</button>
+                                        class="w-10 h-10 flex items-center justify-center hover:bg-black hover:text-white transition-colors text-xs">+</button>
                                 </div>
 
                                 <button
-                                    class="text-sm font-medium text-red-500 hover:text-red-700 flex items-center gap-1 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    class="text-[10px] font-bold text-black/30 uppercase tracking-widest hover:text-red-600 transition-colors flex items-center gap-2">
+                                    <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                        stroke-width="2.5">
+                                        <path d="M6 18L18 6M6 6l12 12" />
                                     </svg>
-                                    Remove
+                                    Decommission
                                 </button>
                             </div>
                         </div>
-                    @endforeach
-
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
 
-        <div class="mt-12 lg:mt-0 lg:col-span-5 lg:sticky lg:top-8">
-            <div class="bg-gray-900 rounded-3xl p-8 text-white shadow-2xl">
-                <h2 class="text-xl font-bold mb-6">Order Summary</h2>
-
-                <div class="py-6 flex items-center justify-between border-b border-gray-800 mb-8">
-                    <dt class="text-xl font-bold">Total</dt>
-                    <dd class="text-3xl font-black text-indigo-400">$299.00</dd>
+        {{-- Right Side: The Secure Vault (Payment) --}}
+        <div class="mt-16 lg:mt-0 lg:col-span-5 lg:sticky lg:top-12">
+            <div class="bg-black text-white p-10 shadow-[0_40px_80px_rgba(0,0,0,0.15)] relative overflow-hidden">
+                {{-- Subtle Technical Background --}}
+                <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
+                    style="background-image: radial-gradient(#ffffff 0.5px, transparent 0.5px); background-size: 20px 20px;">
                 </div>
 
-                <form class="space-y-6">
+                <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] mb-10 border-b border-white/10 pb-4">
+                    Transaction Protocol</h2>
+
+                {{-- Summary --}}
+                <div class="flex items-baseline justify-between mb-12">
+                    <span class="text-[11px] font-bold uppercase tracking-widest text-white/40">Total Valuation</span>
+                    <span class="text-5xl tracking-tighter"
+                        style="font-family: 'DM Serif Display', serif;">$299.00</span>
+                </div>
+
+                <form class="space-y-8 relative z-10">
                     <div>
-                        <label for="card_number" class="block text-sm font-medium text-gray-400">Card Number</label>
-                        <div class="relative mt-1">
-                            <input type="text" name="card_number" id="card_number" placeholder="0000 0000 0000 0000"
-                                class="block w-full rounded-xl border-gray-700 bg-gray-800 p-4 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                            <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                        <label class="block text-[9px] font-bold text-white/40 uppercase tracking-widest mb-3">Encrypted
+                            Card Entry</label>
+                        <div class="relative">
+                            <input type="text" placeholder="0000 0000 0000 0000"
+                                class="w-full bg-white/5 border border-white/10 rounded-none py-4 px-5 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/40 transition-all font-mono">
+                            <div
+                                class="absolute inset-y-0 right-4 flex items-center grayscale brightness-200 opacity-30">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
-                                    alt="Visa" class="h-4">
+                                    alt="Visa" class="h-3">
                             </div>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-2 gap-6">
                         <div>
-                            <label for="expiry_date" class="block text-sm font-medium text-gray-400">Expiry Date</label>
-                            <input type="text" name="expiry_date" id="expiry_date" placeholder="MM / YY"
-                                class="mt-1 block w-full rounded-xl border-gray-700 bg-gray-800 p-4 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <label
+                                class="block text-[9px] font-bold text-white/40 uppercase tracking-widest mb-3">Expiry</label>
+                            <input type="text" placeholder="MM / YY"
+                                class="w-full bg-white/5 border border-white/10 rounded-none py-4 px-5 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/40 transition-all font-mono">
                         </div>
                         <div>
-                            <label for="cvv" class="block text-sm font-medium text-gray-400">CVV</label>
-                            <input type="text" name="cvv" id="cvv" placeholder="123"
-                                class="mt-1 block w-full rounded-xl border-gray-700 bg-gray-800 p-4 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <label
+                                class="block text-[9px] font-bold text-white/40 uppercase tracking-widest mb-3">Security
+                                Code</label>
+                            <input type="text" placeholder="CVV"
+                                class="w-full bg-white/5 border border-white/10 rounded-none py-4 px-5 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/40 transition-all font-mono">
                         </div>
                     </div>
 
-                    <div class="pt-4">
+                    <div class="pt-6">
                         <button type="submit"
-                            class="w-full bg-indigo-500 text-white rounded-2xl py-4 font-bold hover:bg-indigo-600 transition-all shadow-lg shadow-indigo-500/20 active:scale-[0.98]">
-                            Pay $299.00 Now
+                            class="w-full bg-white text-black py-5 text-[11px] font-bold uppercase tracking-[0.4em] hover:bg-[#FAFAF8] hover:scale-[1.02] active:scale-95 transition-all shadow-2xl shadow-white/5">
+                            Authorize Payment
                         </button>
                     </div>
                 </form>
 
-                <div class="mt-6">
+                <div class="mt-10 pt-8 border-t border-white/5">
                     <a href="#"
-                        class="block w-full text-center bg-transparent border border-gray-700 text-gray-300 rounded-2xl py-4 font-bold hover:bg-gray-800 transition-all">
-                        Continue Shopping
+                        class="block w-full text-center text-[9px] font-bold uppercase tracking-[0.3em] text-white/30 hover:text-white transition-colors">
+                        ← Continue Exploration
                     </a>
                 </div>
 
-                <div class="mt-6 flex items-center justify-center gap-6 grayscale opacity-60">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-3"
+                {{-- Security Trust Badges --}}
+                <div class="mt-10 flex items-center justify-center gap-8 opacity-20 grayscale brightness-200">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-2"
                         alt="Visa">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-5"
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-4"
                         alt="Mastercard">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-4"
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-3"
                         alt="PayPal">
                 </div>
             </div>

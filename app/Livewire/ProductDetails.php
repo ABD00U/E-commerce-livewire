@@ -12,11 +12,17 @@ class ProductDetails extends Component
     public $id;
 
     public $similerProductInCart = [];
-    public $item = [];
+    public ProductModel $item;
 
-    public $quantity = 1;
+    public $quantity;
 
+    public $userId;
 
+    public function mount($id)
+    {
+        $this->item = ProductModel::findOrFail($id);
+        $this->userId = auth()->id();
+    }
     public function increment()
     {
         $this->quantity++;
@@ -34,12 +40,10 @@ class ProductDetails extends Component
     public function addToCart($id)
     {
 
-        $product = ProductModel::findOrFail($id);
-
-        if (!$product) {
+        if (!$this->item) {
             return;
         }
-        $cart = CartModel::where('product_id', $id)->where('user_id', auth()->id())->first();
+        $cart = $this->item->cart->where('user_id', $this->userId)->first();
 
         if ($cart) {
             $cart->quantity = $this->quantity;
@@ -49,8 +53,8 @@ class ProductDetails extends Component
             CartModel::create([
                 'product_id' => $id,
                 'quantity' => $this->quantity,
-                'user_id' => auth()->id(),
-                "price" => $product->price
+                'user_id' => $this->userId,
+                "price" => $this->item->price
 
             ]);
         }
@@ -62,16 +66,13 @@ class ProductDetails extends Component
             CartModel::where('user_id', Auth::id())
                 ->where('product_id', $this->id)
                 ->update(['quantity' => $this->quantity]);
+
             $this->dispatch('cart-updated');
         }
     }
 
     public function render()
     {
-
-
-        $this->item = ProductModel::findOrFail($this->id);
-
 
         return view('livewire.product-details')->layout('layouts.app');
     }

@@ -1,94 +1,140 @@
-<div class="max-w-4xl mx-auto my-10 px-4">
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+<div class="max-w-5xl mx-auto my-16 px-4" style="font-family: 'DM Sans', sans-serif;">
+    <div class="bg-white rounded-none shadow-[0_30px_60px_rgba(0,0,0,0.05)] border border-black/5 overflow-hidden">
 
-        <div class="bg-indigo-600 p-6">
-            <h2 class="text-2xl font-bold text-white">List a New Product</h2>
-            <p class="text-indigo-100 text-sm">Fill in the details below to reach thousands of buyers.</p>
+        {{-- Header: Technical Registry --}}
+        <div class="bg-black p-10 flex justify-between items-end">
+            <div>
+                <h2 class="text-3xl tracking-tight text-white" style="font-family: 'DM Serif Display', serif;">
+                    Inventory <em class="italic font-light text-white/40">Registration.</em>
+                </h2>
+                <p class="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] mt-2">Product Specification
+                    Entry</p>
+            </div>
+            <div class="text-right hidden sm:block">
+                <span class="text-white/20 text-[10px] font-mono tracking-tighter italic">SYS_REF:
+                    {{ now()->format('Y-m-d') }}</span>
+            </div>
         </div>
 
-        <form wire:submit.prevent="save" class="p-8 space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <form wire:submit.prevent="save" class="p-10 space-y-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-                <div class="space-y-4">
-                    <label class="block text-sm font-semibold text-gray-700">Product Image</label>
+                {{-- Left: Media Upload --}}
+                <div class="lg:col-span-5 space-y-4">
+                    <label class="block text-[10px] font-bold text-black uppercase tracking-widest">Hardware
+                        Visualization</label>
 
                     <div
-                        class="relative group border-2 border-dashed {{ $errors->has('image') ? 'border-red-400 bg-red-50' : 'border-gray-300 bg-gray-50' }} rounded-xl p-4 transition hover:border-indigo-400 flex flex-col items-center justify-center min-h-[250px]">
+                        class="relative group border border-black/10 {{ $errors->has('image') ? 'bg-red-50' : 'bg-[#FAFAF8]' }} rounded-none p-2 transition hover:border-black flex flex-col items-center justify-center min-h-[350px]">
 
                         @if ($image)
-                            <img src="{{ $image->temporaryUrl() }}" class="rounded-lg object-cover h-48 w-full">
+                            <img src="{{ $image->temporaryUrl() }}"
+                                class="object-contain h-full w-full grayscale-[0.2] group-hover:grayscale-0 transition-all">
+                            <div
+                                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="text-white text-[10px] font-bold uppercase tracking-widest">Replace
+                                    Module</span>
+                            </div>
                         @else
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mb-3" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <p class="text-xs text-gray-500 font-medium">Click or drag to upload image</p>
+                            <div class="text-center p-8">
+                                <svg class="h-8 w-8 text-black/20 mx-auto mb-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                        d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                                <p class="text-[10px] text-black/40 font-bold uppercase tracking-widest">Upload Media
+                                    Asset</p>
+                            </div>
                         @endif
 
                         <input type="file" wire:model="image"
                             class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
                     </div>
                     @error('image')
-                        <p class="text-xs text-red-600 mt-1 font-medium">{{ $message }}</p>
+                        <p class="text-[10px] text-red-600 font-bold uppercase tracking-tighter">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div class="space-y-4">
+                {{-- Right: Technical Data --}}
+                <div class="lg:col-span-7 space-y-8">
+                    {{-- Title --}}
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Product Title</label>
-                        <input type="text" wire:model="name"
-                            class="w-full px-4 py-2 border {{ $errors->has('name') ? 'border-red-400' : 'border-gray-200' }} rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                        <label class="block text-[10px] font-bold text-black uppercase tracking-widest mb-3">Model
+                            Designation</label>
+                        <input type="text" wire:model="name" placeholder="e.g. MK-V Professional Monitor"
+                            class="w-full px-5 py-4 border border-black/10 rounded-none bg-[#FAFAF8] text-sm placeholder-black/20 focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all">
                         @error('name')
-                            <p class="text-xs text-red-600 mt-1 font-medium">{{ $message }}</p>
+                            <p class="text-[10px] text-red-600 font-bold uppercase tracking-tighter mt-2">
+                                {{ $message }}</p>
                         @enderror
                     </div>
 
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-2 gap-6">
+                        {{-- Price --}}
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Price ($)</label>
+                            <label
+                                class="block text-[10px] font-bold text-black uppercase tracking-widest mb-3">Valuation
+                                (USD)</label>
                             <input type="number" wire:model="price"
-                                class="w-full px-4 py-2 border {{ $errors->has('price') ? 'border-red-400' : 'border-gray-200' }} rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                                class="w-full px-5 py-4 border border-black/10 rounded-none bg-[#FAFAF8] text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all">
                             @error('price')
-                                <p class="text-xs text-red-600 mt-1 font-medium">{{ $message }}</p>
+                                <p class="text-[10px] text-red-600 font-bold uppercase tracking-tighter mt-2">
+                                    {{ $message }}</p>
                             @enderror
                         </div>
 
+                        {{-- Category --}}
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                            <label class="block text-[10px] font-bold text-black uppercase tracking-widest mb-3">System
+                                Category</label>
                             <select wire:model="category"
-                                class="w-full px-4 py-2 border {{ $errors->has('category') ? 'border-red-400' : 'border-gray-200' }} rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                                class="w-full px-5 py-4 border border-black/10 rounded-none bg-[#FAFAF8] text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all appearance-none">
                                 <option value="">Select...</option>
-                                <option value="electronics">Electronics</option>
-                                <option value="fashion">Fashion</option>
-                                <option value="home">cars</option>
+                                <option value="electronics">Premium Electronics</option>
+                                <option value="components">Hardware Components</option>
+                                <option value="peripherals">Input Peripherals</option>
                             </select>
                             @error('category')
-                                <p class="text-xs text-red-600 mt-1 font-medium">{{ $message }}</p>
+                                <p class="text-[10px] text-red-600 font-bold uppercase tracking-tighter mt-2">
+                                    {{ $message }}</p>
                             @enderror
                         </div>
                     </div>
 
+                    {{-- Description --}}
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                        <textarea wire:model="description" rows="4"
-                            class="w-full px-4 py-2 border {{ $errors->has('description') ? 'border-red-400' : 'border-gray-200' }} rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+                        <label class="block text-[10px] font-bold text-black uppercase tracking-widest mb-3">Technical
+                            Overview</label>
+                        <textarea wire:model="description" rows="5" placeholder="Enter detailed specifications..."
+                            class="w-full px-5 py-4 border border-black/10 rounded-none bg-[#FAFAF8] text-sm placeholder-black/20 focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all"></textarea>
                         @error('description')
-                            <p class="text-xs text-red-600 mt-1 font-medium">{{ $message }}</p>
+                            <p class="text-[10px] text-red-600 font-bold uppercase tracking-tighter mt-2">
+                                {{ $message }}</p>
                         @enderror
                     </div>
                 </div>
             </div>
 
-            <div class="pt-6 border-t border-gray-100 flex justify-end gap-3">
-                <button type="button" class="px-6 py-2 text-gray-600 font-medium hover:bg-gray-50 rounded-lg">
-                    Cancel
+            {{-- Footer Actions --}}
+            <div class="pt-10 border-t border-black/5 flex items-center justify-between">
+                <button type="button"
+                    class="text-[10px] font-bold text-black/40 uppercase tracking-[0.2em] hover:text-black transition-colors">
+                    Discard Draft
                 </button>
 
                 <button type="submit" wire:loading.attr="disabled"
-                    class="px-8 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-md transition-all active:scale-95 disabled:opacity-50">
-                    <span wire:loading.remove>Post Product</span>
-                    <span wire:loading>Processing...</span>
+                    class="px-12 py-5 bg-black text-white text-[11px] font-bold uppercase tracking-[0.3em] shadow-xl hover:bg-black/80 hover:scale-[1.02] transition-all active:scale-95 disabled:opacity-50">
+                    <span wire:loading.remove>Commit to Registry</span>
+                    <span wire:loading class="flex items-center gap-2">
+                        <svg class="animate-spin h-3 w-3 text-white" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                        Processing...
+                    </span>
                 </button>
             </div>
         </form>

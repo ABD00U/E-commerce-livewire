@@ -1,33 +1,61 @@
-<div class="relative overflow-hidden bg-gray-900 rounded-[3rem] mb-12 mx-4 lg:mx-8">
-    <div class="absolute top-0 right-0 -mt-20 -mr-20 h-96 w-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 -mb-20 -ml-20 h-72 w-72 bg-purple-600/10 rounded-full blur-3xl"></div>
+<div class="mx-4 mb-12 flex min-h-[380px] overflow-hidden rounded-xl bg-[#F0EDE8] lg:mx-8 border border-black/5"
+    style="font-family: 'DM Sans', sans-serif;">
 
-    <div class="relative px-8 py-16 sm:px-16 sm:py-24 lg:flex lg:items-center lg:justify-between">
-        <div class="max-w-xl">
-            <span
-                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-indigo-500 text-white mb-6">
-                Limited Time Offer
-            </span>
-            <h2 class="text-4xl sm:text-6xl font-black text-white italic tracking-tighter leading-[0.9]">
-                UPGRADE YOUR <br />
-                <span class="text-indigo-400">LIFESTYLE.</span>
+    {{-- Left Content --}}
+    <div class="flex flex-1 flex-col justify-between p-10 sm:p-16">
+        <div>
+            <div class="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.25em] text-black">
+                <span class="h-px w-8 bg-black"></span>
+                Next-Gen Tech
+            </div>
+
+            <h2 class="mb-6 text-5xl leading-[0.95] tracking-tight text-black sm:text-7xl"
+                style="font-family: 'DM Serif Display', serif;">
+                The Future of<br><em class="italic font-light text-black/40">Innovation.</em>
             </h2>
-            <p class="mt-6 text-lg text-gray-400 font-medium max-w-md">
-                Get up to <span class="text-white font-bold">40% off</span> on our new spring collection. Premium
-                quality, delivered to your door.
+
+            <p class="mb-10 max-w-sm text-[15px] font-medium leading-relaxed text-black/60">
+                Explore a curated selection of high-performance devices.
+                From professional workstations to everyday essentials, <span class="text-black font-semibold">expertly
+                    tested.</span>
             </p>
+
+            <div class="flex items-center gap-8">
+                <a href="{{ route('categories') }}"
+                    class="rounded-none bg-black px-9 py-4 text-[11px] font-bold uppercase tracking-widest text-white transition hover:bg-black/80 hover:scale-[1.02] transform duration-200">
+                    Browse Gear
+                </a>
+                <a href="{{ route('categories') }}"
+                    class="text-[11px] font-bold uppercase tracking-widest text-black/40 transition hover:text-black border-b border-black/10 hover:border-black pb-1">
+                    New Arrivals →
+                </a>
+            </div>
         </div>
 
-        <div class="hidden lg:block relative">
-            <div
-                class="relative z-10 w-80 h-80 rounded-[2.5rem] rotate-3 overflow-hidden border-8 border-white/5 shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800"
-                    alt="Featured Product" class="w-full h-full object-cover">
-            </div>
-            <div class="absolute -bottom-6 -left-6 z-20 bg-indigo-600 text-white p-6 rounded-3xl shadow-2xl -rotate-6">
-                <p class="text-3xl font-black tracking-tighter">40%</p>
-                <p class="text-[10px] font-bold uppercase tracking-widest">Discount</p>
-            </div>
+        {{-- Product Focus Tags --}}
+        <div class="mt-12 flex flex-wrap gap-3">
+            @foreach (['Computing', 'Audio', 'Mobile', 'Smart Home'] as $tag)
+                <span
+                    class="rounded-none border border-black/10 bg-black/5 px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-black/70">
+                    {{ $tag }}
+                </span>
+            @endforeach
+        </div>
+    </div>
+
+    {{-- Right Image --}}
+    <div class="relative hidden w-[350px] flex-shrink-0 overflow-hidden lg:block xl:w-[450px]">
+        {{-- High-res minimalist photo generated to match image_0.png aesthetic --}}
+        <img src="{{ asset('storage/premium-desk-hero.png') }}" alt="Premium Electronics Desk Setup"
+            class="h-full w-full object-cover contrast-[1.1] grayscale-[30%] brightness-[0.9] transition-transform duration-1000 hover:scale-110">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+
+        {{-- Precision Label (Retained from your original code) --}}
+        <div class="absolute bottom-8 right-8 bg-black px-6 py-5 text-white shadow-2xl">
+            <span class="block text-xs font-bold uppercase tracking-[0.2em] opacity-60">Verified</span>
+            <span class="mt-1 block text-2xl font-light tracking-tight"
+                style="font-family: 'DM Serif Display', serif;">Grade A+</span>
         </div>
     </div>
 </div>

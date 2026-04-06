@@ -27,7 +27,6 @@ Route::get('/categories', Category::class)->name('categories');
 
 Route::get('cart', Cart::class)->name('cart');
 
-
 Route::get("/login", Login::class)->name('login')->middleware('guest');
 
 Route::get("/register", Register::class)->name('register')->middleware('guest');
