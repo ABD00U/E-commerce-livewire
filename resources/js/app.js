@@ -1,7 +1,7 @@
 import "./bootstrap";
 import Alpine from "alpinejs";
 
-// 1️⃣ Define store FIRST — before anything else
+window.Alpine = Alpine;
 Alpine.store("auth", {
     isAuthenticated: false,
     showAuthModal: false,
@@ -14,8 +14,3 @@ Alpine.store("auth", {
         }
     },
 });
-
-// 2️⃣ Expose Alpine globally
-window.Alpine = Alpine;
-
-// 3️⃣ DON'T call Alpine.start() — Livewire v3 handles this automatically
