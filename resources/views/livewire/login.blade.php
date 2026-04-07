@@ -22,14 +22,14 @@
         <div class="mt-10 sm:mx-auto w-full max-w-md">
             <div class="bg-white py-12 px-6 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-black/5 sm:px-12">
                 <form class="space-y-6" wire:submit.prevent="login" method="POST">
-
-
                     {{-- Phone Field --}}
 
                     <div>
+
                         <label for="phone"
                             class="block text-[10px] font-bold text-black uppercase tracking-widest mb-2">Phone
                             Number</label>
+
                         <div class="relative mt-1">
                             <input id="phone" name="phone" type="tel" wire:model.blur="phone"
                                 class="appearance-none block w-full px-4 py-4 border border-black/10 rounded-none bg-[#FAFAF8] text-sm placeholder-black/20 focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all"

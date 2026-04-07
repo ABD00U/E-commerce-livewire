@@ -1,12 +1,9 @@
 import "./bootstrap";
 import Alpine from "alpinejs";
 
-// resources/js/app.js
-window.Alpine = Alpine;
-Alpine.start();
-
+// 1️⃣ Store FIRST — before anything
 Alpine.store("auth", {
-    isAuthenticated: false, // will be set from Blade
+    isAuthenticated: false,
     showAuthModal: false,
 
     redirect(url) {
@@ -17,3 +14,8 @@ Alpine.store("auth", {
         }
     },
 });
+
+// 2️⃣ Expose globally
+window.Alpine = Alpine;
+
+// 3️⃣ NO Alpine.start() — Livewire v3 handles it ✅

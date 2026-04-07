@@ -39,7 +39,6 @@
             @endif
         });
     </script>
-
     @livewireScripts
 </body>
 
