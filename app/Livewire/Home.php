@@ -5,8 +5,10 @@ namespace App\Livewire;
 use App\Models\CartModel;
 use App\Models\ProductModel;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class Home extends Component
 {
     public $productsData = [];
@@ -46,6 +48,6 @@ class Home extends Component
     {
         $this->productsData = ProductModel::get();
 
-        return view('livewire.home')->layout('layouts.app');
+        return view('livewire.home');
     }
 }

@@ -3,7 +3,11 @@
 namespace App\Livewire;
 
 use App\Models\ProductModel;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
+
+
+#[Layout('layouts.app')]
 
 class Category extends Component
 {

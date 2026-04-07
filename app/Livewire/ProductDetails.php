@@ -5,75 +5,79 @@ namespace App\Livewire;
 use App\Models\CartModel;
 use App\Models\ProductModel;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class ProductDetails extends Component
 {
-    public $id;
-
-    public $similerProductInCart = [];
     public ProductModel $item;
+    public int $quantity = 1;
 
-    public $quantity;
-
-    public $userId;
-
-    public function mount($id)
+    public function mount(int $id): void
     {
         $this->item = ProductModel::findOrFail($id);
-        $this->userId = auth()->id();
-    }
-    public function increment()
-    {
-        $this->quantity++;
-        $this->updateCart();
+
+        $this->quantity = $this->getCartItem()?->quantity ?? 1;
     }
 
-    public function decrement()
+    public function increment(): void
+    {
+        $this->quantity++;
+        $this->dispatch('cart-updated');
+    }
+
+    public function decrement(): void
     {
         if ($this->quantity > 1) {
             $this->quantity--;
-            $this->updateCart();
-        }
-    }
-
-    public function addToCart($id)
-    {
-
-        if (!$this->item) {
-            return;
-        }
-        $cart = $this->item->cart->where('user_id', $this->userId)->first();
-
-        if ($cart) {
-            $cart->quantity = $this->quantity;
-            $cart->save();
-        } else {
-
-            CartModel::create([
-                'product_id' => $id,
-                'quantity' => $this->quantity,
-                'user_id' => $this->userId,
-                "price" => $this->item->price
-
-            ]);
-        }
-        $this->dispatch('cart-updated');
-    }
-    private function updateCart()
-    {
-        if (Auth::check()) {
-            CartModel::where('user_id', Auth::id())
-                ->where('product_id', $this->id)
-                ->update(['quantity' => $this->quantity]);
-
             $this->dispatch('cart-updated');
         }
     }
 
+    public function addToCart(): void
+    {
+        if (Auth::guest()) {
+            session(['guest' => true]);
+            $this->dispatch('open-auth-modal');
+            return;
+        }
+
+        $cart = $this->getCartItem();
+
+        if ($cart) {
+            $cart->update(['quantity' => $this->quantity]);
+        } else {
+            CartModel::create([
+                'product_id' => $this->item->id,
+                'quantity'   => $this->quantity,
+                'user_id'    => Auth::id(),
+                'price'      => $this->item->price,
+            ]);
+        }
+        $this->flashSuccess('Product added to cart successfully!');
+
+        $this->dispatch('cart-updated');
+    }
+
+
+    private function getCartItem(): ?CartModel
+    {
+        return CartModel::where('user_id', Auth::id())
+            ->where('product_id', $this->item->id)
+            ->first();
+    }
+
+    private function flashSuccess(string $message): void
+    {
+        session()->flash('message', $message);
+        session()->flash('type', 'success');
+    }
+
+
+
     public function render()
     {
-
-        return view('livewire.product-details')->layout('layouts.app');
+        return view('livewire.product-details');
     }
 }

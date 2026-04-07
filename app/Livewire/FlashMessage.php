@@ -15,7 +15,6 @@ class FlashMessage extends Component
 
     public function mount()
     {
-        // ✅ اقرأ من الـ session بعد الـ redirect
         $this->message = session('message', '');
         $this->type    = session('type', 'success');
     }

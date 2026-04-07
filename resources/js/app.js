@@ -17,5 +17,5 @@ Alpine.store("auth", {
 
 // 2️⃣ Expose globally
 window.Alpine = Alpine;
-
+// Alpine.start();
 // 3️⃣ NO Alpine.start() — Livewire v3 handles it ✅

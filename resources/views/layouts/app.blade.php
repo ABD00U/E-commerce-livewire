@@ -16,29 +16,21 @@
     @livewireStyles
 </head>
 
-<body class="w-full mx-auto capitalize" x-data="{ showAuthModal: false, isLoggedIn: {{ auth()->check() ? 'true' : 'false' }} }">
+<body class="w-full mx-auto capitalize">
 
     <x-header />
 
-    <x-auth-model />
+    @livewire('AuthDialog')
 
     <div class="p-4 max-w-[1500px] mx-auto">
 
         {{ $slot }}
-        <livewire:flash-message />
+
+        @livewire('FlashMessage')
     </div>
 
     <x-footer />
 
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.store('auth').isAuthenticated = {{ auth()->check() ? 'true' : 'false' }};
-
-            @if (session('show_auth_modal'))
-                Alpine.store('auth').showAuthModal = true;
-            @endif
-        });
-    </script>
     @livewireScripts
 </body>
 

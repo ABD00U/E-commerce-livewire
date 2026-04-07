@@ -4,8 +4,12 @@ namespace App\Livewire;
 
 use App\Models\ProductModel;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+
+
+#[Layout('layouts.app')]
 
 class Sell extends Component
 {
@@ -55,6 +59,6 @@ class Sell extends Component
 
     {
 
-        return view('livewire.sell')->layout('layouts.app');
+        return view('livewire.sell');
     }
 }

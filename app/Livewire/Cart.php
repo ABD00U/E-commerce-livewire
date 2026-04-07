@@ -4,7 +4,11 @@ namespace App\Livewire;
 
 use App\Models\CartModel;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
+
+
+#[Layout('layouts.app')]
 
 class Cart extends Component
 {
@@ -21,6 +25,6 @@ class Cart extends Component
             $this->productInCart = CartModel::where('user_id', Auth::user()->id)->get();
         }
 
-        return view('livewire.cart')->layout('layouts.app');
+        return view('livewire.cart');
     }
 }

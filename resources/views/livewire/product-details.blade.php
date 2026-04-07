@@ -82,8 +82,7 @@
             {{-- Action Buttons --}}
             <div class="mt-12">
                 @if (auth()->id() !== $item->user_id)
-                    <button
-                        @click="$store.auth.isAuthenticated ? $wire.addToCart({{ $item->id }}) : $store.auth.showAuthModal = true"
+                    <button wire:click="addToCart"
                         class="w-full bg-black text-white py-5 text-[11px] font-bold uppercase tracking-[0.25em] transition-all hover:bg-black/80 hover:scale-[1.01] active:scale-95 shadow-xl">
                         Add to Inventory
                     </button>

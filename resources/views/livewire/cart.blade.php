@@ -1,4 +1,4 @@
-<div class="max-w-[1400px] mx-auto px-6 py-20 lg:px-12" style="font-family: 'DM Sans', sans-serif;">
+<div class="max-w-[1400px] mx-auto md:px-6 py-20 lg:px-12" style="font-family: 'DM Sans', sans-serif;">
 
     {{-- Header: Terminal Status --}}
     <div class="flex items-end justify-between border-b border-black/5 pb-10 mb-16">
@@ -73,9 +73,9 @@
 
         {{-- Right Side: The Secure Vault (Payment) --}}
         <div class="mt-16 lg:mt-0 lg:col-span-5 lg:sticky lg:top-12">
-            <div class="bg-black text-white p-10 shadow-[0_40px_80px_rgba(0,0,0,0.15)] relative overflow-hidden">
+            <div class="bg-zinc-800 text-white p-10 shadow-[0_40px_80px_rgba(0,0,0,0.15)] relative overflow-hidden">
                 {{-- Subtle Technical Background --}}
-                <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
+                <div class="absolute inset-0  pointer-events-none"
                     style="background-image: radial-gradient(#ffffff 0.5px, transparent 0.5px); background-size: 20px 20px;">
                 </div>
 
@@ -93,6 +93,7 @@
                     <div>
                         <label class="block text-[9px] font-bold text-white/40 uppercase tracking-widest mb-3">Encrypted
                             Card Entry</label>
+
                         <div class="relative">
                             <input type="text" placeholder="0000 0000 0000 0000"
                                 class="w-full bg-white/5 border border-white/10 rounded-none py-4 px-5 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/40 transition-all font-mono">
