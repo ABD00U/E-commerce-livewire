@@ -35,7 +35,11 @@
         <div>
             <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.15em] text-black">Navigation</p>
             <ul class="space-y-3">
-                @foreach ([['/', 'Home'], [route('about'), 'About Us'], [route('sell'), 'Start Selling'], [route('contact'), 'Contact']] as [$href, $label])
+                <li><button wire:click='handleRoute(sell)'
+                        class="text-[13px] font-medium text-black/60 transition hover:text-black">Start
+                        Selling</button>
+                </li>
+                @foreach ([['/', 'Home'], [route('about'), 'About Us'], [route('contact'), 'Contact']] as [$href, $label])
                     <li><a href="{{ $href }}"
                             class="text-[13px] font-medium text-black/60 transition hover:text-black">{{ $label }}</a>
                     </li>
@@ -47,11 +51,11 @@
         <div>
             <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.15em] text-black">Account</p>
             <ul class="space-y-3">
-                @foreach ([['/orders', 'Order History'], ['/wishlist', 'Wishlist'], ['/login', 'Login'], ['/register', 'Register']] as [$href, $label])
-                    <li><a href="{{ $href }}"
-                            class="text-[13px] font-medium text-black/60 transition hover:text-black">{{ $label }}</a>
-                    </li>
-                @endforeach
+                <li>
+                    <button wire:click="handleRoute(history)"
+                        class="text-[13px] font-medium text-black/60 transition hover:text-black">Order History</button>
+                </li>
+
             </ul>
         </div>
 

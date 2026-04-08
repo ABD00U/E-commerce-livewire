@@ -1,11 +1,8 @@
 <div>
-    {{-- 1. The Hook: High-level branding --}}
     <x-home.home-header />
 
-    {{-- 2. The Direction: Helps users find what they need (Laptops, Audio, etc.) --}}
     <x-home.rooms />
 
-    {{-- 3. The Products: New Arrivals with the updated Elegant Header --}}
     <section class="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-24">
         <div class="mb-12 flex items-end justify-between border-b border-black/5 pb-8">
             <div>
@@ -31,9 +28,7 @@
         </div>
     </section>
 
-    {{-- 4. The Logistics: Why buy from you? (Shipping, Warranty) --}}
     <x-home.shipping />
 
-    {{-- 5. The Proof: What others think --}}
     <x-home.our-customers />
 </div>

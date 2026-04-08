@@ -18,7 +18,8 @@
 
 <body class="w-full mx-auto capitalize">
 
-    <x-header />
+
+    @livewire('Header')
 
     @livewire('AuthDialog')
 
@@ -29,7 +30,7 @@
         @livewire('FlashMessage')
     </div>
 
-    <x-footer />
+    @livewire('Footer')
 
     @livewireScripts
 </body>

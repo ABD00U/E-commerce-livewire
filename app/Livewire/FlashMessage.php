@@ -6,7 +6,6 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 
 
-// app/Livewire/FlashMessage.php
 
 class FlashMessage extends Component
 {

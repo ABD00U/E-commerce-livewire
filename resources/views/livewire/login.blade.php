@@ -21,7 +21,7 @@
 
         <div class="mt-10 sm:mx-auto w-full max-w-md">
             <div class="bg-white py-12 px-6 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-black/5 sm:px-12">
-                <form class="space-y-6" wire:submit.prevent="login" method="POST">
+                <form class="space-y-6" wire:submit="login">
                     {{-- Phone Field --}}
 
                     <div>

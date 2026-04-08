@@ -1,7 +1,6 @@
 <div class="mx-4 mb-12 flex min-h-[380px] overflow-hidden rounded-xl bg-[#F0EDE8] lg:mx-8 border border-black/5"
     style="font-family: 'DM Sans', sans-serif;">
 
-    {{-- Left Content --}}
     <div class="flex flex-1 flex-col justify-between p-10 sm:p-16">
         <div>
             <div class="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.25em] text-black">
@@ -32,7 +31,6 @@
             </div>
         </div>
 
-        {{-- Product Focus Tags --}}
         <div class="mt-12 flex flex-wrap gap-3">
             @foreach (['Computing', 'Audio', 'Mobile', 'Smart Home'] as $tag)
                 <span
@@ -43,15 +41,13 @@
         </div>
     </div>
 
-    {{-- Right Image --}}
     <div class="relative hidden w-[350px] flex-shrink-0 overflow-hidden lg:block xl:w-[450px]">
-        {{-- High-res minimalist photo generated to match image_0.png aesthetic --}}
+
         <img src="{{ asset('storage/premium-desk-hero.png') }}" alt="Premium Electronics Desk Setup"
             class="h-full w-full object-cover contrast-[1.1] grayscale-[30%] brightness-[0.9] transition-transform duration-1000 hover:scale-110">
 
         <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
 
-        {{-- Precision Label (Retained from your original code) --}}
         <div class="absolute bottom-8 right-8 bg-black px-6 py-5 text-white shadow-2xl">
             <span class="block text-xs font-bold uppercase tracking-[0.2em] opacity-60">Verified</span>
             <span class="mt-1 block text-2xl font-light tracking-tight"

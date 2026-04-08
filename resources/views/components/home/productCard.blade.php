@@ -1,8 +1,8 @@
-<div class="group border border-black/5 bg-white transition-all duration-300 hover:border-black/20 hover:shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)]"
+<div class="group relative border border-black/5 bg-white transition-all duration-300 hover:border-black/20 hover:shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)]"
     style="font-family: 'DM Sans', sans-serif;">
 
     {{-- Product Image Area --}}
-    <a href="{{ route('product', $item->id) }}" class="relative block h-64 overflow-hidden bg-[#F5F4F0]">
+    <a href="{{ route('product', $item->id) }}" class=" relative block h-64 overflow-hidden bg-[#F5F4F0] z-0">
 
         {{-- Status Tags --}}
         <div class="absolute left-3 top-3 z-10 flex flex-col gap-2">
@@ -26,17 +26,16 @@
             <p class="text-[9px] font-bold uppercase tracking-widest opacity-60">Key Specification</p>
             <p class="text-[11px] font-medium leading-tight">High-Performance Hardware • 1 Year Warranty</p>
         </div>
-
-        @if (auth()->id() !== $item->user_id)
-            <button
-                @click.prevent="$store.auth.isAuthenticated ? $wire.addToCart({{ $item->id }}) : $store.auth.showAuthModal = true"
-                class="absolute top-3 right-3 flex h-10 w-10 items-center justify-center rounded-none border border-black/10 bg-white text-black opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-black hover:text-white">
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                </svg>
-            </button>
-        @endif
     </a>
+
+    @if (auth()->id() !== $item->user_id)
+        <button wire:click.stop="addToCart({{ $item->id }})" type="button"
+            class="absolute top-3 z-10 right-3 flex h-10 w-10 items-center justify-center rounded-none border border-black/10 bg-white text-black opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-black hover:text-white">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+        </button>
+    @endif
 
     {{-- Product Info --}}
     <div class="p-5">

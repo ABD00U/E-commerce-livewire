@@ -14,10 +14,19 @@ class Home extends Component
     public $productsData = [];
 
 
+    public function mount()
+    {
+        $this->productsData = ProductModel::all();
+    }
 
     public function addToCart($id)
     {
 
+        if (Auth::guest()) {
+            session(['guest' => true]);
+            $this->dispatch('open-auth-modal');
+            return;
+        }
 
         $product = ProductModel::findOrFail($id);
 
@@ -28,7 +37,8 @@ class Home extends Component
         $cart =  CartModel::where('product_id', $id)->where('user_id', Auth::id())->first();
 
         if ($cart) {
-            return $this->dispatch('flash', message: 'Added to cart before!', type: 'success');
+            $this->dispatch('flash', message: 'Added to cart before!', type: 'success');
+            return;
         }
 
         CartModel::create([
@@ -46,7 +56,6 @@ class Home extends Component
 
     public function render()
     {
-        $this->productsData = ProductModel::get();
 
         return view('livewire.home');
     }

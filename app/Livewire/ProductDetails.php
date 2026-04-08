@@ -55,9 +55,10 @@ class ProductDetails extends Component
                 'price'      => $this->item->price,
             ]);
         }
-        $this->flashSuccess('Product added to cart successfully!');
 
         $this->dispatch('cart-updated');
+
+        $this->flashSuccess('Product added to cart successfully!');
     }
 
 
@@ -70,8 +71,7 @@ class ProductDetails extends Component
 
     private function flashSuccess(string $message): void
     {
-        session()->flash('message', $message);
-        session()->flash('type', 'success');
+        $this->dispatch('flash', message: $message, type: 'success');
     }
 
 
