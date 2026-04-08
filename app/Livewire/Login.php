@@ -27,14 +27,13 @@ class Login extends Component
 
     {
         $this->validate();
+        $user =  Auth::attempt(['phone' => $this->phone, 'password' => $this->password]);
 
-        if (
-            Auth::attempt(['phone' => $this->phone, 'password' => $this->password])
-
-        ) {
+        if ($user) {
             return redirect()->route('home')->with('message', 'You have logged in successfully')->with('type', 'success');
+        } else {
+            $this->addError('phone', 'Incorrect phone number or password.');
         }
-        $this->addError('phone', 'Incorrect phone number or password.');
     }
 
 
