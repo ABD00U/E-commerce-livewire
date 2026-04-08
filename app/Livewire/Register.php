@@ -4,9 +4,12 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
+
+#[Layout('layouts.app')]
 class Register extends Component
 {
 
@@ -20,7 +23,7 @@ class Register extends Component
         'name' => 'required|min:3',
         'phone' => 'required|starts_with:01|digits:11|unique:users',
         'password' => 'required|confirmed|min:8',
-        
+
     ];
 
 

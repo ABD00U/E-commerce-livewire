@@ -33,6 +33,7 @@
     @livewire('Footer')
 
     @livewireScripts
+
 </body>
 
 </html>
