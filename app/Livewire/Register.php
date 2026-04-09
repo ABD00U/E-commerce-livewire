@@ -43,10 +43,7 @@ class Register extends Component
             'password' => bcrypt($this->password),
         ]);
 
-        if (
-
-            $user
-        ) {
+        if ($user) {
             $login =   Auth::attempt([
                 'phone' => $this->phone,
                 'password' => $this->password

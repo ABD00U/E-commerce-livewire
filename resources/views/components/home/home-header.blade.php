@@ -43,7 +43,7 @@
 
     <div class="relative hidden w-[350px] flex-shrink-0 overflow-hidden lg:block xl:w-[450px]">
 
-        <img src="{{ asset('storage/premium-desk-hero.png') }}" alt="Premium Electronics Desk Setup"
+        <img src="{{ asset('images/premium-desk-hero.png') }}" alt="Premium Electronics Desk Setup"
             class="h-full w-full object-cover contrast-[1.1] grayscale-[30%] brightness-[0.9] transition-transform duration-1000 hover:scale-110">
 
         <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>

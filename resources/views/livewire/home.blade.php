@@ -22,7 +22,7 @@
         </div>
 
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            @foreach ($productsData as $product)
+            @foreach ($products as $product)
                 <x-home.productCard :item="$product" />
             @endforeach
         </div>

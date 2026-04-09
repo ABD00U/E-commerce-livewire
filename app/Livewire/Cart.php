@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\CartModel;
+use App\Models\ProductModel;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -13,18 +14,13 @@ use Livewire\Component;
 class Cart extends Component
 {
     public $productInCart = [];
-    public $products=[];
+    public ProductModel $products;
 
 
 
     public function render()
 
     {
-
-        if (Auth::check()) {
-            $this->productInCart = CartModel::where('user_id', Auth::user()->id)->get();
-        }
-
         return view('livewire.cart');
     }
 }

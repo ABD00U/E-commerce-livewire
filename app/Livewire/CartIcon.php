@@ -19,7 +19,7 @@ class CartIcon extends Component
     #[On('cart-updated')]  // 👈 listens for this event
     public function refreshCount(): void
     {
-        
+
         $this->cartCount = Auth::check()
             ? CartModel::where('user_id', Auth::id())->sum('quantity')
             : 0;

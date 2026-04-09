@@ -26,8 +26,8 @@ class Sell extends Component
         return [
             'name'        => 'required|min:3|max:255',
             'description' => 'required|min:3|max:255',
-            'price'       => 'required|numeric', // Added numeric for better data integrity
-            'image'       => 'required|max:1024', // max:1024 is 1MB
+            'price'       => 'required|numeric',
+            'image'       => 'required|max:1024',
             'category'    => 'required',
         ];
     }

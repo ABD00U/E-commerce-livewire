@@ -11,52 +11,42 @@ use Livewire\Component;
 #[Layout('layouts.app')]
 class Home extends Component
 {
-    public $productsData = [];
-
-
-    public function mount()
+    public function addToCart(int $id): void
     {
-        $this->productsData = ProductModel::all();
-    }
-
-    public function addToCart($id)
-    {
-
         if (Auth::guest()) {
-            session(['guest' => true]);
             $this->dispatch('open-auth-modal');
             return;
         }
 
         $product = ProductModel::findOrFail($id);
 
-        if (!$product) {
-            return;
-        }
-
-        $cart =  CartModel::where('product_id', $id)->where('user_id', Auth::id())->first();
-
-        if ($cart) {
-            $this->dispatch('flash', message: 'Added to cart before!', type: 'success');
+        if ($this->alreadyInCart($id)) {
+            $this->dispatch('flash', message: 'Already in your cart!', type: 'warning');
             return;
         }
 
         CartModel::create([
             'product_id' => $id,
-            "user_id" => Auth::id(),
+            'user_id'    => Auth::id(),
             'quantity'   => 1,
-            'price' => $product->price
-
+            'price'      => $product->price,
         ]);
 
         $this->dispatch('cart-updated');
-
-        return $this->dispatch('flash', message: 'Added to cart!', type: 'success');
+        $this->dispatch('flash', message: 'Added to cart!', type: 'success');
     }
 
     public function render()
     {
+        return view('livewire.home', [
+            'products' => ProductModel::all(),
+        ]);
+    }
 
-        return view('livewire.home');
+    private function alreadyInCart(int $id): bool
+    {
+        return CartModel::where('product_id', $id)
+            ->where('user_id', Auth::id())
+            ->exists();
     }
 }
