@@ -35,7 +35,7 @@
         <div>
             <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.15em] text-black">Navigation</p>
             <ul class="space-y-3">
-                <li><button wire:click='handleRoute(sell)'
+                <li><button wire:click="handleRoute('sell')"
                         class="text-[13px] font-medium text-black/60 transition hover:text-black">Start
                         Selling</button>
                 </li>
@@ -52,7 +52,7 @@
             <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.15em] text-black">Account</p>
             <ul class="space-y-3">
                 <li>
-                    <button wire:click="handleRoute(history)"
+                    <button wire:click="handleRoute('history')"
                         class="text-[13px] font-medium text-black/60 transition hover:text-black">Order History</button>
                 </li>
 

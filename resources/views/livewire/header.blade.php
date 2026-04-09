@@ -29,14 +29,14 @@
                 </a>
             @endforeach
 
-            <button wire:click="handleRoute(history)"
+            <button wire:click="handleRoute(/'history')"
                 class="text-[13px] text-black/50 transition hover:text-black">Order
                 History</button>
         </div>
 
         {{-- Actions --}}
         <div class="flex items-center gap-4">
-            <button wire:click="handleRoute(sell)"
+            <button wire:click="handleRoute('sell')"
                 class="rounded-sm border border-black px-5 py-2 text-[11px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white">
                 Sell Now
             </button>

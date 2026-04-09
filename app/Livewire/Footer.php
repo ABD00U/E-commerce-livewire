@@ -15,7 +15,7 @@ class Footer extends Component
             $this->dispatch('open-auth-modal');
             return;
         }
-        return redirect()->route($route);
+        return redirect('/' . $route);
     }
 
     public function render()

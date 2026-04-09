@@ -16,7 +16,8 @@ class Header extends Component
             return;
         }
 
-        return redirect()->route($route);
+
+        return redirect('/' . $route);
     }
     public function render()
     {

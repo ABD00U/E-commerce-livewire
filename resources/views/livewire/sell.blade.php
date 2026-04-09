@@ -88,11 +88,12 @@
                             <label class="block text-[10px] font-bold text-black uppercase tracking-widest mb-3">System
                                 Category</label>
                             <select wire:model="category"
-                                class="w-full px-5 py-4 border border-black/10 rounded-none bg-[#FAFAF8] text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all appearance-none">
-                                <option value="">Select...</option>
-                                <option value="electronics">Premium Electronics</option>
-                                <option value="components">Hardware Components</option>
-                                <option value="peripherals">Input Peripherals</option>
+                                class="w-full px-5 py-4 border border-black/10 rounded-none bg-[#FAFAF8] text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all appearance-none cursor-pointer">
+                                <option value="">Select Category</option>
+                                <option value="computing">Computing</option>
+                                <option value="audio">Audio</option>
+                                <option value="mobile">Mobile</option>
+                                <option value="smart-home">Smart Home</option>
                             </select>
                             @error('category')
                                 <p class="text-[10px] text-red-600 font-bold uppercase tracking-tighter mt-2">

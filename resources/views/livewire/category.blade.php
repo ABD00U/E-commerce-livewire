@@ -1,6 +1,5 @@
 <div class="max-w-[1440px] mx-auto px-6 py-16 lg:px-12" style="font-family: 'DM Sans', sans-serif;">
 
-    {{-- Shop Header: Technical Registry --}}
     <div class="flex flex-col xl:flex-row xl:items-end justify-between gap-10 mb-16 border-b border-black/5 pb-12">
         <div class="max-w-xl">
             <div class="mb-3 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-black/40">
@@ -15,9 +14,7 @@
             </p>
         </div>
 
-        {{-- Filter Protocol --}}
         <div class="flex flex-col sm:flex-row items-end gap-6 w-full xl:w-auto">
-            {{-- Search Module --}}
             <div class="relative w-full sm:w-72 group">
                 <input wire:model.live.debounce.300ms="search" type="text" placeholder="Search Registry..."
                     class="w-full bg-[#FAFAF8] border border-black/5 rounded-none py-4 pl-5 pr-10 text-[12px] font-bold uppercase tracking-widest text-black focus:ring-1 focus:ring-black focus:border-black transition-all placeholder:text-black/20">
@@ -29,17 +26,17 @@
                 </div>
             </div>
 
-            {{-- Category Module --}}
             <div class="w-full sm:w-60">
                 <label class="block text-[9px] font-black text-black/30 uppercase tracking-[0.3em] mb-2">Filter
                     Protocol</label>
                 <div class="relative">
-                    <select wire:model.live="category"
-                        class="w-full bg-white border border-black/10 rounded-none py-4 px-5 text-[11px] font-bold uppercase tracking-widest text-black focus:ring-1 focus:ring-black appearance-none cursor-pointer">
-                        <option value="">All Systems</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="fashion">Wearables</option>
-                        <option value="cars">Automotive</option>
+                    <select wire:model="category"
+                        class="w-full px-5 py-4 border border-black/10 rounded-none bg-[#FAFAF8] text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all appearance-none cursor-pointer">
+                        <option value="">All Category</option>
+                        <option value="computing">Computing</option>
+                        <option value="audio">Audio</option>
+                        <option value="mobile">Mobile</option>
+                        <option value="smart-home">Smart Home</option>
                     </select>
                     <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                         <svg class="h-3 w-3 text-black/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -51,17 +48,14 @@
         </div>
     </div>
 
-    {{-- Product Grid --}}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-black/5 border border-black/5 shadow-2xl">
         @forelse($products as $product)
             <div class="group relative flex flex-col bg-white p-8 transition-colors duration-500 hover:bg-[#FAFAF8]">
 
-                {{-- Product Image Container --}}
                 <div class="relative aspect-[1/1] w-full overflow-hidden bg-[#F5F5F3] border border-black/5">
                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                         class="h-full w-full object-contain p-8 mix-blend-multiply transition-transform duration-[2s] ease-out group-hover:scale-110">
 
-                    {{-- Technical Badge --}}
                     <div class="absolute top-0 left-0 p-4">
                         @if ($product->is_new)
                             <span
@@ -71,7 +65,6 @@
                         @endif
                     </div>
 
-                    {{-- Hover Quick View --}}
                     <a href="{{ route('product', $product->id) }}"
                         class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                         <button
@@ -81,7 +74,6 @@
                     </a>
                 </div>
 
-                {{-- Product Metadata --}}
                 <div class="mt-8">
                     <div class="flex justify-between items-start gap-4">
                         <div class="flex-1">
@@ -103,7 +95,6 @@
                         </div>
                     </div>
 
-                    {{-- Industrial Progress Bar (Hover Decoration) --}}
                     <div class="mt-8 flex items-center gap-4">
                         <div class="h-px flex-1 bg-black/10 relative overflow-hidden">
                             <div
@@ -121,5 +112,7 @@
                 </h3>
             </div>
         @endforelse
+        {{ $products->links() }}
+
     </div>
 </div>
