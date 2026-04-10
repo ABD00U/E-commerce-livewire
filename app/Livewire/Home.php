@@ -21,7 +21,7 @@ class Home extends Component
         $product = ProductModel::findOrFail($id);
 
         if ($this->alreadyInCart($id)) {
-            $this->dispatch('flash', message: 'Already in your cart!', type: 'warning');
+            $this->dispatch('flash', message: 'Already in your cart!', type: 'success');
             return;
         }
 

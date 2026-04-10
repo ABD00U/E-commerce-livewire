@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -22,6 +23,18 @@ class User extends Authenticatable
         'phone',
         'password',
     ];
+
+
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartModel::class);
+    }
+
+    // A user HAS MANY products (if user is a seller)
+    public function products(): HasMany
+    {
+        return $this->hasMany(ProductModel::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

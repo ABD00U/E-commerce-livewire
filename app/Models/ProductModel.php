@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductModel extends Model
 {
@@ -22,8 +23,8 @@ class ProductModel extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function cart()
+    public function cart(): HasMany
     {
-        return $this->belongsToMany(CartModel::class);
+        return $this->hasMany(CartModel::class, 'product_id');
     }
 }
