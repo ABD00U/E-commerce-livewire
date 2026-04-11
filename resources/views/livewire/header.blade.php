@@ -2,7 +2,6 @@
     style="font-family: 'DM Sans', sans-serif;">
     <div class="mx-auto flex h-[60px] max-w-[1400px] items-center justify-between gap-8 px-4 sm:px-6 lg:px-8">
 
-        {{-- Logo --}}
         <a href="/" class="text-[1.35rem] tracking-tight text-black font-bold"
             style="font-family: 'DM Serif Display', serif;">
             NEX<span class="italic">MART</span>
