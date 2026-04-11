@@ -28,7 +28,7 @@ class Login extends Component
     {
         $this->validate();
         if (!Auth::attempt(['phone' => $this->phone, 'password' => $this->password])) {
-            $this->addError('phone', 'Invalid credentials.');
+            $this->addError('phone', 'User Not Found');
             return;
         }
 

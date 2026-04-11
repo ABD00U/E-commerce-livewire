@@ -29,7 +29,7 @@
                 </a>
             @endforeach
 
-            <button wire:click="handleRoute(/'history')"
+            <button wire:click="handleRoute('history')"
                 class="text-[13px] text-black/50 transition hover:text-black">Order
                 History</button>
         </div>
