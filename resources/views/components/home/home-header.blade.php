@@ -1,4 +1,4 @@
-<div class="mx-4 mb-12 flex min-h-[380px] overflow-hidden rounded-xl bg-[#F0EDE8] lg:mx-8 border border-black/5"
+<div class="mx-4 mb-12 flex min-h-[420px] overflow-hidden rounded-xl bg-[#F0EDE8] lg:mx-8 border border-black/5"
     style="font-family: 'DM Sans', sans-serif;">
 
     <div class="flex flex-1 flex-col justify-between p-10 sm:p-16">
@@ -41,17 +41,18 @@
         </div>
     </div>
 
-    <div class="relative hidden w-[350px] flex-shrink-0 overflow-hidden lg:block xl:w-[450px]">
+    <div class="relative hidden w-[350px] flex-shrink-0 overflow-hidden lg:block xl:w-[500px] bg-black">
+        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop"
+            alt="Minimalist Workstation"
+            class="h-full w-full object-cover contrast-[1.1] grayscale-[20%] brightness-[0.8] transition-transform duration-1000 hover:scale-105">
 
-        <img src="{{ asset('storage/images/premium-desk-hero.png') }}" alt="Premium Electronics Desk Setup"
-            onerror="this.style.display='none'"
-            class="h-full w-full object-cover contrast-[1.1] grayscale-[30%] brightness-[0.9] transition-transform duration-1000 hover:scale-110">
+        {{-- Subtle architectural overlay --}}
+        <div class="absolute inset-0 bg-gradient-to-l from-black/20 via-transparent to-transparent"></div>
 
-        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-
-        <div class="absolute bottom-8 right-8 bg-black px-6 py-5 text-white shadow-2xl">
-            <span class="block text-xs font-bold uppercase tracking-[0.2em] opacity-60">Verified</span>
-            <span class="mt-1 block text-2xl font-light tracking-tight"
+        <div
+            class="absolute bottom-8 right-8 bg-black/90 backdrop-blur-sm px-8 py-6 text-white shadow-2xl border border-white/10">
+            <span class="block text-[10px] font-black uppercase tracking-[0.3em] opacity-50">Verified Status</span>
+            <span class="mt-1 block text-3xl font-light tracking-tighter"
                 style="font-family: 'DM Serif Display', serif;">Grade A+</span>
         </div>
     </div>
