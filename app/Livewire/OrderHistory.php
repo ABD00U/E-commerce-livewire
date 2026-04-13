@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\orders;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class OrderHistory extends Component
@@ -11,32 +13,13 @@ class OrderHistory extends Component
 
     public function mount()
     {
-        $this->orders = collect([
-            (object)[
-                'id' => 'ORD-9921-X',
-                'quantity' => 1,
-                'total_amount' => 1250.00,
-                'created_at' => now()->subDays(2),
-                'product' => (object)[
-                    'name' => 'Linear Processor Core',
-                    'price' => 1250.00,
-                    'image' => 'products/core-01.png',
-                ]
-            ],
-            (object)[
-                'id' => 'ORD-9921-X',
-                'quantity' => 1,
-                'total_amount' => 1250.00,
-                'created_at' => now()->subDays(2),
-                'product' => (object)[
-                    'name' => 'Linear Processor Core',
-                    'price' => 1250.00,
-                    'image' => 'products/core-01.png',
-                ]
-            ],
-        ]);
+        $this->orders = orders::where('user_id', Auth::id())
+            ->with('items.product')
+            ->get();
+
     }
-    public $items = [1, 2];
+
+
     public function render()
     {
         return view('livewire.order-history');

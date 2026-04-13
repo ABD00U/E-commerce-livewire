@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_history', function (Blueprint $table) {
-
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->string('address');
-            $table->string('status')->default('processing');
+            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->decimal('total_amount', 12, 2);
             $table->integer('quantity');
+            $table->decimal('price', 10, 2);
             $table->timestamps();
         });
     }

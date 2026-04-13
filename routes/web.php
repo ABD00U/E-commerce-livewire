@@ -34,5 +34,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/logout', [logout::class, 'logout'])->name('logout');
 });
+
 Route::get("/register", Register::class)->name('register')->middleware('guest');
+
 Route::get("/login", Login::class)->name('login')->middleware('guest');

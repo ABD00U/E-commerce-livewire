@@ -3,7 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\CartModel;
-use App\Models\OrderHistory;
+use App\Models\orders;
+use App\Models\ordersItems;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -47,13 +48,18 @@ class Cart extends Component
     {
         $this->validate();
 
+
+        $order = orders::create([
+            'user_id' => Auth::id(),
+            'total'   => $this->total,
+        ]);
+
         foreach ($this->items as $item) {
-            OrderHistory::create([
-                'user_id' => Auth::user()->id,
+            ordersItems::create([
+                'order_id'   => $order->id,
                 'product_id' => $item->product_id,
-                'quantity' => $item->quantity,
-                'total_amount' => $item->total,
-                'address' => $this->address,
+                'quantity'   => $item->quantity,
+                'price'      => $item->product->price,
             ]);
         }
 
