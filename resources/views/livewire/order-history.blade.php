@@ -10,6 +10,10 @@
             <h1 class="text-5xl tracking-tighter text-black sm:text-6xl" style="font-family: 'DM Serif Display', serif;">
                 Your <em class="italic font-light text-black/30">History.</em>
             </h1>
+            {{-- ✅ welcome message --}}
+            <p class="mt-2 text-[11px] font-bold uppercase tracking-widest text-black/30">
+                Welcome back, <span class="text-black/60">{{ Auth::user()->name }}</span>
+            </p>
         </div>
         <div class="text-right">
             <p class="text-[10px] font-bold text-black uppercase tracking-widest">Total Logs</p>
@@ -78,7 +82,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @forelse ($this->orders->first()->items as $order)
+            @forelse ($orders->items()[0]->items as $order)
                 <div
                     class="group relative bg-white border border-black/5 p-8 transition-all duration-500 hover:border-black/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
 
@@ -126,5 +130,9 @@
             @endforelse
         </div>
 
+
+    </div>
+    <div class="flex justify-center mt-12">
+        {{ $orders->links('vendor.pagination.default') }}
     </div>
 </div>
