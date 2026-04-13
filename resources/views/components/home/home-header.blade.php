@@ -33,7 +33,7 @@
 
         <div class="mt-12 flex flex-wrap gap-3">
             @foreach (['Computing', 'Audio', 'Mobile', 'Smart Home'] as $tag)
-                <a href="{{ route('categories', ['category' => strtolower($tag)]) }}"
+                <a href="{{ route('categories', ['category' => str_replace(' ', '-', strtolower($tag))]) }}"
                     class="rounded-none border border-black/10 bg-black/5 px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-black/70 transition-all duration-200 hover:bg-black hover:text-white hover:border-black">
                     {{ $tag }}
                 </a>
