@@ -7,10 +7,13 @@ use App\Models\ProductModel;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 #[Layout('layouts.app')]
 class Home extends Component
 {
+
+    use WithPagination;
     public function addToCart(int $id): void
     {
         if (Auth::guest()) {
@@ -39,7 +42,7 @@ class Home extends Component
     public function render()
     {
         return view('livewire.home', [
-            'products' => ProductModel::all(),
+            'products' => ProductModel::paginate(6),
         ]);
     }
 

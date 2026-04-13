@@ -26,6 +26,10 @@
                 <x-home.productCard :item="$product" />
             @endforeach
         </div>
+
+        <div class="mt-4 flex flex-row justify-center">
+            {{ $products->links('vendor.pagination.default') }}
+        </div>
     </section>
 
     <x-home.shipping />

@@ -33,17 +33,18 @@
 
         <div class="mt-12 flex flex-wrap gap-3">
             @foreach (['Computing', 'Audio', 'Mobile', 'Smart Home'] as $tag)
-                <span
-                    class="rounded-none border border-black/10 bg-black/5 px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-black/70">
+                <a href="{{ route('categories', ['category' => strtolower($tag)]) }}"
+                    class="rounded-none border border-black/10 bg-black/5 px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-black/70 transition-all duration-200 hover:bg-black hover:text-white hover:border-black">
                     {{ $tag }}
-                </span>
+                </a>
             @endforeach
         </div>
     </div>
 
     <div class="relative hidden w-[350px] flex-shrink-0 overflow-hidden lg:block xl:w-[450px]">
 
-        <img src="{{ asset('images/premium-desk-hero.png') }}" alt="Premium Electronics Desk Setup"
+        <img src="{{ asset('storage/images/premium-desk-hero.png') }}" alt="Premium Electronics Desk Setup"
+            onerror="this.style.display='none'"
             class="h-full w-full object-cover contrast-[1.1] grayscale-[30%] brightness-[0.9] transition-transform duration-1000 hover:scale-110">
 
         <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
